@@ -1,9 +1,9 @@
 # Congratulator
 A handy library to show custom congratulations screen
 
-[![](https://jitpack.io/v/TempND/Congratulator.svg)](https://jitpack.io/#TempND/Congratulator)
+[![](https://jitpack.io/v/NiDaAppDev/Congratulator.svg)](https://jitpack.io/#NiDaAppDev/Congratulator)
 
 ### Installation (Add In Dependencies)
 
-	  implementation 'com.github.TempND:Congratulator:0.1.0'
+	  implementation 'com.github.NiDaAppDev:Congratulator:0.1.0'
 
