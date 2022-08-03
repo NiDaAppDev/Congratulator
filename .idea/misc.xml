@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="Congratulator/src/main/res/layout/close_blinking_tv.xml" value="0.29157759726378796" />
         <entry key="Congratulator/src/main/res/layout/content_tv.xml" value="0.25" />
+        <entry key="Congratulator/src/main/res/layout/dismiss_blinking_tv.xml" value="0.29243266353142366" />
+        <entry key="Congratulator/src/main/res/layout/ok_btn.xml" value="0.29157759726378796" />
         <entry key="Congratulator/src/main/res/layout/title_tv.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3411458333333333" />
       </map>

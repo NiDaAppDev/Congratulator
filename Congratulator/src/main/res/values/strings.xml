@@ -2,4 +2,5 @@
 <resources>
     <string name="congratulations_title_default">Congratulations!</string>
     <string name="congratulations_content_default">Well Done!</string>
+    <string name="congratulations_dismiss_default">Tap Anywhere To Dismiss</string>
 </resources>

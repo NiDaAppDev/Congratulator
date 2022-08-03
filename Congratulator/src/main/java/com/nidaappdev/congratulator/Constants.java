@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 public class Constants {
 
-    public static final int DEFAULT_MASK_COLOR = 0x70000000;
+    public static final int DEFAULT_MASK_COLOR = 0xcc000000;
 
     public static long DEFAULT_DELAY_MILLIS = 0;
 
