@@ -1,5 +1,5 @@
 # Congratulator
-A handy library to show custom congratulations screen
+A handy library to show custom congratulations screen (uses [confetti library](https://github.com/jinatonic/confetti) and [animations library](https://github.com/daimajia/AndroidViewAnimations))
 
 [![](https://jitpack.io/v/NiDaAppDev/Congratulator.svg)](https://jitpack.io/#NiDaAppDev/Congratulator)
 
@@ -8,7 +8,7 @@ A handy library to show custom congratulations screen
 
 ## Screenshot
 
-![congratulator_screenshot](https://user-images.githubusercontent.com/30749705/182738184-864bd340-3632-40f8-b28d-f4feaf5b2c3b.gif)
+![congratulator_screenshot](https://user-images.githubusercontent.com/30749705/182833793-4b4cb590-65e0-41dd-8332-466c6fcb4030.gif)
 
 ## Installation (Add In Dependencies)
 	implementation 'com.github.NiDaAppDev:Congratulator:0.1.0'
@@ -18,15 +18,19 @@ A handy library to show custom congratulations screen
 Here's a code that's showing a CongratulationView:
 
 	CongratulationView congratulator = new CongratulationView.Builder(this)
-                        .setTitle(title)
-                        .setContent(content)
-                        .enableSound(enable)
-                        .setConfettiColors(confettiColors)
-                        .show();
+				.setTitle(title)
+				.setContent(content)
+				.setImageRes(imageRes)
+				.enableSound(enable)
+				.enableImage(isImageEnabled, isImageAnimationEnabled)
+				.setConfettiColors(confettiColors)
+				.show();
 #### Attributes
 <code>setTitle(String)</code> Title is the "Congratulation!" in the gif above.\
 <code>setContent(String)</code> Content is the "Well Done!" in the gif above.\
-<code>enableSound(boolean)</code> Determines if a sound is played when showing.\
+<code>setImageRes(int)</code> ImageRes is the resource id of the image (trophy in the gif above).\
+<code>enableSound(boolean)</code> Determines whether a sound is played when showing or not.\
+<code>enableImage(boolean, boolean)</code> Determines whether the image is showing or not, and whether it's animated or not.\
 <code>setConfettiColors(int[])</code> Confetti colors are the colors of the confetti particles in the gif above.
 
 ### Future Development
