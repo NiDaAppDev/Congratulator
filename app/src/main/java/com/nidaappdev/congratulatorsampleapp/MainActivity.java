@@ -3,7 +3,6 @@ package com.nidaappdev.congratulatorsampleapp;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.TypedArrayUtils;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.nidaappdev.congratulator.CongratulationView;
@@ -23,7 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Button congratulateButton;
-    private CongratulationView congratulationViewBuilder;
+    private CongratulationView congratulator;
     private TextInputEditText titleET, contentET;
     private CheckBox enableSoundCheckBox, greenCheckBox, blueCheckBox, purpleCheckBox;
     private PrefUtil util;
@@ -127,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         congratulateButton = findViewById(R.id.congratulate_button);
         congratulateButton.setOnClickListener((v) ->
-                congratulationViewBuilder = new CongratulationView.Builder(this)
+                congratulator = new CongratulationView.Builder(this)
                         .setTitle(util.getTitle())
                         .setContent(util.getContent())
                         .enableSound(util.isSoundEnabled())
