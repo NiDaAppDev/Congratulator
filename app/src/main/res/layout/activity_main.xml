@@ -55,11 +55,33 @@
             android:textColor="@color/cardview_dark_background"
             android:text="Enable Sound"/>
 
+        <CheckBox
+            android:id="@+id/enable_image_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/enable_sound_checkBox"
+            app:layout_constraintStart_toStartOf="@id/enable_sound_checkBox"
+            android:buttonTint="@color/design_default_color_primary"
+            android:saveEnabled="false"
+            android:textColor="@color/cardview_dark_background"
+            android:text="Enable Image"/>
+
+        <CheckBox
+            android:id="@+id/enable_image_animation_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/enable_image_checkBox"
+            app:layout_constraintStart_toStartOf="@id/enable_image_checkBox"
+            android:buttonTint="@color/design_default_color_primary"
+            android:saveEnabled="false"
+            android:textColor="@color/cardview_dark_background"
+            android:text="Enable Image Animation"/>
+
         <TextView
             android:id="@+id/colors_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/enable_sound_checkBox"
+            app:layout_constraintTop_toBottomOf="@id/enable_image_animation_checkBox"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="Confetti colors (Examples):"/>

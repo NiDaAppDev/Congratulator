@@ -19,6 +19,8 @@ public class PrefUtil {
 
     private static final String PREF_NAME = "prefs";
     private static final String SOUND_PREFERENCE_NAME = "soundEnabled";
+    private static final String IMAGE_ENABLED_PREFERENCE_NAME = "imageEnabled";
+    private static final String IMAGE_ANIMATIONS_ENABLED_PREFERENCE_NAME = "imageAnimationsEnabled";
     private static final String TITLE_PREFERENCE_NAME = "title";
     private static final String CONTENT_PREFERENCE_NAME = "content";
     private static final String CONFETTI_COLORS_PREFERENCE_NAME = "confettiColors";
@@ -36,6 +38,24 @@ public class PrefUtil {
 
     public boolean isSoundEnabled() {
         return sharedPreferences.getBoolean(SOUND_PREFERENCE_NAME, true);
+    }
+
+    public void enableImage(boolean enable) {
+        editor.putBoolean(IMAGE_ENABLED_PREFERENCE_NAME, enable);
+        editor.apply();
+    }
+
+    public boolean isImageEnabled() {
+        return sharedPreferences.getBoolean(IMAGE_ENABLED_PREFERENCE_NAME, true);
+    }
+
+    public void enableImageAnimation(boolean enable) {
+        editor.putBoolean(IMAGE_ANIMATIONS_ENABLED_PREFERENCE_NAME, enable);
+        editor.apply();
+    }
+
+    public boolean isImageAnimationEnabled() {
+        return sharedPreferences.getBoolean(IMAGE_ANIMATIONS_ENABLED_PREFERENCE_NAME, true);
     }
 
     public void setTitle(String title) {

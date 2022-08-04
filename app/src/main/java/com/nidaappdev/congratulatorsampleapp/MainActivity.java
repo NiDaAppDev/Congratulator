@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button congratulateButton;
     private CongratulationView congratulator;
     private TextInputEditText titleET, contentET;
-    private CheckBox enableSoundCheckBox, greenCheckBox, blueCheckBox, purpleCheckBox;
+    private CheckBox enableSoundCheckBox, enableImageCheckBox, enableImageAnimationCheckBox, greenCheckBox, blueCheckBox, purpleCheckBox;
     private PrefUtil util;
     private int[] confettiColors;
 
@@ -81,6 +81,19 @@ public class MainActivity extends AppCompatActivity {
             util.enableSound(checked);
         });
 
+        enableImageCheckBox = findViewById(R.id.enable_image_checkBox);
+        enableImageCheckBox.setChecked(util.isImageEnabled());
+        enableImageCheckBox.setOnCheckedChangeListener((checkBox, checked) -> {
+            enableImageAnimationCheckBox.setEnabled(checked);
+            util.enableImage(checked);
+        });
+
+        enableImageAnimationCheckBox = findViewById(R.id.enable_image_animation_checkBox);
+        enableImageAnimationCheckBox.setChecked(util.isImageAnimationEnabled());
+        enableImageAnimationCheckBox.setOnCheckedChangeListener((checkBox, checked) -> {
+            util.enableImageAnimation(checked);
+        });
+
         greenCheckBox = findViewById(R.id.green_checkBox);
         greenCheckBox.setChecked(util.getConfettiColors().contains("green"));
         greenCheckBox.setOnCheckedChangeListener((checkBox, checked) -> {
@@ -129,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                         .setTitle(util.getTitle())
                         .setContent(util.getContent())
                         .enableSound(util.isSoundEnabled())
+                        .enableImage(util.isImageEnabled(), util.isImageAnimationEnabled())
                         .setConfettiColors(confettiColors)
                         .show()
         );

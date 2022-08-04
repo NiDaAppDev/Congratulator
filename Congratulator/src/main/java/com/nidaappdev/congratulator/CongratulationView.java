@@ -22,11 +22,14 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.github.jinatonic.confetti.CommonConfetti;
 import com.github.jinatonic.confetti.ConfettiManager;
 
@@ -115,10 +118,27 @@ public class CongratulationView extends RelativeLayout {
     private Uri soundUri;
 
     /**
+     * Image resource
+     */
+    private int imageRes;
+
+    /**
      * Determines whether sound is
      * played or not
      */
     private boolean soundEnabled;
+
+    /**
+     * Determines whether an image is
+     * shown or not
+     */
+    private boolean imageEnabled;
+
+    /**
+     * Determines whether the image is
+     * animating when showing or not
+     */
+    private boolean imageAnimationEnabled;
 
     /**
      * Title TextView
@@ -130,7 +150,15 @@ public class CongratulationView extends RelativeLayout {
      */
     private TextView contentTV;
 
+    /**
+     * Tap anywhere to dismiss TextView
+     */
     private TextView dismissTV;
+
+    /**
+     * ImageView
+     */
+    private ImageView image;
 
     public CongratulationView(Context context) {
         super(context);
@@ -161,9 +189,12 @@ public class CongratulationView extends RelativeLayout {
         title = Constants.DEFAULT_TITLE;
         content = Constants.DEFAULT_CONTENT;
         soundUri = Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_effect);
+        imageRes = R.drawable.trophy_painting;
         isLayoutCompleted = false;
         isReady = false;
         soundEnabled = true;
+        imageEnabled = true;
+        imageAnimationEnabled = true;
 
         /**
          * initialize objects
@@ -183,6 +214,9 @@ public class CongratulationView extends RelativeLayout {
 
         contentTV = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.content_tv, null);
         contentTV.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+
+        image = (ImageView) LayoutInflater.from(getContext()).inflate(R.layout.image, null);
+        image.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
 
         dismissTV = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.dismiss_blinking_tv, null);
         dismissTV.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
@@ -313,7 +347,8 @@ public class CongratulationView extends RelativeLayout {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         contentParams.addRule(BELOW, R.id.title);
         contentParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        contentParams.addRule(RelativeLayout.ABOVE, R.id.dismiss);
+        if(!imageEnabled)
+            contentParams.addRule(RelativeLayout.ABOVE, R.id.dismiss);
         contentParams.setMargins((int) (5 * dp), (int) (20 * dp), (int) (5 * dp), (int) (5 * dp));
         contentTV.setLayoutParams(contentParams);
         contentTV.postInvalidate();
@@ -336,6 +371,29 @@ public class CongratulationView extends RelativeLayout {
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
         dismissTV.startAnimation(anim);
+    }
+
+    private void setImage() {
+        if (image.getParent() != null) {
+            ((ViewGroup)image.getParent()).removeView(image);
+        }
+
+        float dp = getResources().getDisplayMetrics().scaledDensity;
+
+        RelativeLayout.LayoutParams imageParams = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        imageParams.addRule(RelativeLayout.BELOW, R.id.content);
+        imageParams.addRule(RelativeLayout.ABOVE, R.id.dismiss);
+        imageParams.setMargins((int) (5 * dp), (int) (100 * dp), (int) (5 * dp), (int) (10 * dp));
+        image.setLayoutParams(imageParams);
+        image.postInvalidate();
+        addView(image);
+        image.setImageResource(imageRes);
+        if(imageAnimationEnabled)
+            YoYo.with(Techniques.Pulse)
+                .duration(750)
+                .playOn(image);
     }
 
     private void startConfetti() {
@@ -373,6 +431,8 @@ public class CongratulationView extends RelativeLayout {
         handler.post(() -> {
             isLayoutCompleted = true;
             setTextViews();
+            if(imageEnabled)
+                setImage();
             startConfetti();
             if (soundEnabled)
                 playSound();
@@ -399,6 +459,10 @@ public class CongratulationView extends RelativeLayout {
         this.soundUri = soundSrc;
     }
 
+    private void setImageRes(int imageRes) {
+        this.imageRes = imageRes;
+    }
+
     private void setTitle(String title) {
         this.title = title;
     }
@@ -409,6 +473,11 @@ public class CongratulationView extends RelativeLayout {
 
     private void enableSound(boolean soundEnabled) {
         this.soundEnabled = soundEnabled;
+    }
+
+    private void enableImage(boolean imageEnabled, boolean imageAnimationEnabled) {
+        this.imageEnabled = imageEnabled;
+        this.imageAnimationEnabled = imageAnimationEnabled;
     }
 
     private void setReady(boolean isReady) {
@@ -455,6 +524,11 @@ public class CongratulationView extends RelativeLayout {
             return this;
         }
 
+        public Builder setImageRes(int imageRes) {
+            congratulationView.setImageRes(imageRes);
+            return this;
+        }
+
         public Builder setTitle(String title) {
             congratulationView.setTitle(title);
             return this;
@@ -467,6 +541,11 @@ public class CongratulationView extends RelativeLayout {
 
         public Builder enableSound(boolean enable) {
             congratulationView.enableSound(enable);
+            return this;
+        }
+
+        public Builder enableImage(boolean enable, boolean animated) {
+            congratulationView.enableImage(enable, animated);
             return this;
         }
 
