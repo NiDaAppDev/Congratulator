@@ -3,6 +3,9 @@ A handy library to show custom congratulations screen
 
 [![](https://jitpack.io/v/NiDaAppDev/Congratulator.svg)](https://jitpack.io/#NiDaAppDev/Congratulator)
 
+### <b><i>Sample App APK</b></i>
+[Sample App](https://github.com/NiDaAppDev/Congratulator/blob/master/Congratulator/sample%20app.apk)
+
 ## Screenshot
 
 ![congratulator_screenshot](https://user-images.githubusercontent.com/30749705/182738184-864bd340-3632-40f8-b28d-f4feaf5b2c3b.gif)
