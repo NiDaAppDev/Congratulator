@@ -21,7 +21,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Button congratulateButton;
-    private CongratulationView congratulator;
     private TextInputEditText titleET, contentET;
     private CheckBox enableSoundCheckBox, enableImageCheckBox, enableImageAnimationCheckBox, greenCheckBox, blueCheckBox, purpleCheckBox;
     private PrefUtil util;
@@ -138,9 +137,10 @@ public class MainActivity extends AppCompatActivity {
 
         congratulateButton = findViewById(R.id.congratulate_button);
         congratulateButton.setOnClickListener((v) ->
-                congratulator = new CongratulationView.Builder(this)
+                new CongratulationView.Builder(this)
                         .setTitle(util.getTitle())
                         .setContent(util.getContent())
+                        .setImageRes(com.nidaappdev.congratulator.R.drawable.trophy_painting)
                         .enableSound(util.isSoundEnabled())
                         .enableImage(util.isImageEnabled(), util.isImageAnimationEnabled())
                         .setConfettiColors(confettiColors)

@@ -341,6 +341,7 @@ public class CongratulationView extends RelativeLayout {
         titleTV.postInvalidate();
         addView(titleTV);
         titleTV.setText(title);
+        titleTV.setTextColor(getResources().getColor(R.color.text_color));
 
         RelativeLayout.LayoutParams contentParams = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -354,6 +355,7 @@ public class CongratulationView extends RelativeLayout {
         contentTV.postInvalidate();
         addView(contentTV);
         contentTV.setText(content);
+        contentTV.setTextColor(getResources().getColor(R.color.text_color));
 
         RelativeLayout.LayoutParams dismissParams = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -364,6 +366,7 @@ public class CongratulationView extends RelativeLayout {
         dismissTV.setLayoutParams(dismissParams);
         dismissTV.postInvalidate();
         addView(dismissTV);
+        dismissTV.setTextColor(getResources().getColor(R.color.text_color));
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(500);
