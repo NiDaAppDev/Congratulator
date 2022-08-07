@@ -17,7 +17,7 @@ A handy library to show custom congratulations screen (uses [confetti library](h
 (An example app is attached)\
 Here's a code that's showing a CongratulationView:
 
-	CongratulationView congratulator = new CongratulationView.Builder(this)
+	CongratulationView congratulator = new CongratulationView.Builder(activity)
 				.setTitle(title)
 				.setContent(content)
 				.setImageRes(imageRes)
