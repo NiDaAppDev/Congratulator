@@ -11,7 +11,7 @@ A handy library to show custom congratulations screen (uses [confetti library](h
 ![congratulator_screenshot](https://user-images.githubusercontent.com/30749705/182833793-4b4cb590-65e0-41dd-8332-466c6fcb4030.gif)
 
 ## Installation (Add In Dependencies)
-	implementation 'com.github.NiDaAppDev:Congratulator:0.1.1'
+	implementation 'com.github.NiDaAppDev:Congratulator:0.1.2'
 
 ## Usage
 (An example app is attached)\
